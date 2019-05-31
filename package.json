@@ -1,0 +1,55 @@
+{
+  "name": "dack-server",
+  "version": "0.0.1",
+  "description": "The server for Dack",
+  "main": "src/main.ts",
+  "scripts": {
+    "start": "node --inspect=5858 -r ts-node/register ./src/main.ts",
+    "start:watch": "nodemon",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lksfnd/Dack-Server.git"
+  },
+  "keywords": [
+    "dack",
+    "dart",
+    "tracker",
+    "server"
+  ],
+  "author": "Lukas Fend",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lksfnd/Dack-Server/issues"
+  },
+  "homepage": "https://github.com/Lksfnd/Dack-Server#readme",
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "dist",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "npm start",
+    "ext": "ts"
+  },
+  "devDependencies": {
+    "@types/express": "^4.16.1",
+    "@types/node": "^12.0.4",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.1"
+  },
+  "dependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-import": "^2.17.3",
+    "express": "^4.17.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
+    "ts-node": "^8.2.0"
+  }
+}
