@@ -1,0 +1,23 @@
+{
+    "server": {
+        "port": 3000
+    },
+    "database": {
+        "host": "127.0.0.1",
+        "port": 27017,
+        "database": "dack",
+        "user": "",
+        "password": "",
+        "timeout": 10
+    },
+    "security": {
+        "authSecret": "qTcfP98fmXJ75xkp2bHVs4Gc6C3uPNpt",
+        "sessionLimit": 5
+    },
+    "api": {
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorisation"
+        }
+    }
+}
