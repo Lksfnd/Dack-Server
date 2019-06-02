@@ -1,5 +1,9 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/0d2e15a71d0bcd9879fd/maintainability)](https://codeclimate.com/github/Lksfnd/Dack-Server/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0d2e15a71d0bcd9879fd/test_coverage)](https://codeclimate.com/github/Lksfnd/Dack-Server/test_coverage)
 # Dack-Server
+
 A scoreboard &amp; tournament manager for Darts
+
 
 ## Technologies
 Below is a short explanation of which technologies are used and what they're used for.  
