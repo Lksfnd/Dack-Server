@@ -7,7 +7,7 @@ const SchemaUser = mongoose.Schema({
     passwordHash: String,
     registerTimestamp: { type: Number, default: Date.now() },
     players: { type: [mongoose.Schema.Types.ObjectId], default: [] },
-    tournaments: [],
+    tournaments: {type: [], default: [] },
     games: { type: [mongoose.Schema.Types.ObjectId], default: [] }
 });
 

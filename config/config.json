@@ -19,5 +19,11 @@
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, Authorisation"
         }
+    },
+    "rateLimiting": {
+        "registrationLimit": {
+            "count": 5,
+            "expiration": 86400000
+        }
     }
 }
