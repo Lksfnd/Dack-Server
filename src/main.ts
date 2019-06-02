@@ -1,5 +1,5 @@
 /*
-
+    Main Server script
 */
 // Import Packages
 import express from 'express';
@@ -12,6 +12,7 @@ import config from '../config/config.json';
 // Import Routes
 import RouteStatus from './routes/status';
 import RouteAuthenticate from './routes/authenticate';
+import RouteUser from './routes/user';
 
 
 const app = express();
@@ -72,10 +73,59 @@ app.use((req, res, next) => {
 */
 app.use('/status', RouteStatus); // Status Page
 app.use('/authenticate', RouteAuthenticate); // Authentication (for logging in)
+app.use('/user', RouteUser);
+
+// CHECK Authentication
+app.use((req: any, res, next) => {
+
+  // look for token
+  const token: string = req.body.token || req.query.token || req.headers['x-access-token'];
+
+  // if user has a token
+  if(token) {
+
+    // verify that token is valid
+    jsonWebToken.verify(token, config.security.authSecret, (error, decoded) => {
+
+      // invalid
+      if(error) {
+
+        return res.status(403).json({
+          success: false,
+          response: 'ERR_AUTHENTICATION_FAILED'
+        });
+
+      // valid
+      } else {
+
+        req.session = decoded;
+        next();
+
+      }
+
+    });
+
+  // when no token was passed
+  } else {
+
+    return res
+      .status(401)
+      .header('WWW-Authenticate', 'Pass authentication token. Possibilities: header value "x-access-token", query value "token", json body value "token"')
+      .send({
+        success: false,
+        response: 'ERR_NO_AUTH_TOKEN'
+      });
+
+  }
+
+
+
+});
 
 /*
 *   Authenticated routes
 */
+
 
 
 // no routes found
