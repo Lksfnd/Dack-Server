@@ -61,7 +61,7 @@ router.get('/email-available/:email', (req, res, next) => {
 
     const email: string = req.params.email;
 
-    // no name passed
+    // no email passed
     if (!email) {
         res
             .status(HTTPStatusCode.CERR_BAD_REQUEST)

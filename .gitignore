@@ -5,3 +5,5 @@ package-lock.json
 /.idea/
 /logs/
 /dist/
+/coverage/
+/__tests__/

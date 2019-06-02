@@ -170,3 +170,7 @@ app.listen(port, () => {
   return console.log(`server is listening on http://localhost:${port}`);
 
 });
+
+
+export default app;
+export {mongoose};
