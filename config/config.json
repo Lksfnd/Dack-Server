@@ -14,6 +14,10 @@
         "authSecret": "qTcfP98fmXJ75xkp2bHVs4Gc6C3uPNpt",
         "sessionLimit": 5
     },
+    "logging": {
+        "access": "%projectroot%\\logs\\%logtime%_access.log",
+        "accessSchema": "combined"
+    },
     "api": {
         "headers": {
             "Access-Control-Allow-Origin": "*",

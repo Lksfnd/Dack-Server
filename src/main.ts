@@ -7,12 +7,14 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import jsonWebToken from 'jsonwebtoken';
+import fs from 'fs';
 import config from '../config/config.json';
 
 // Import Routes
 import RouteStatus from './routes/status';
 import RouteAuthenticate from './routes/authenticate';
 import RouteUser from './routes/user';
+import PlaceholderReplacer from './helpers/PlaceholderReplacer';
 
 
 const app = express();
@@ -35,8 +37,16 @@ db.on('open', () => {
   console.log('Connected to database successfully!');
 });
 
+/**
+ * Logging
+ */
 // logging requests to console via morgan in dev-mode
 app.use(morgan('dev'));
+const accessLogPath: string = PlaceholderReplacer(config.logging.access);
+app.use(morgan(config.logging.accessSchema, { stream: fs.createWriteStream(accessLogPath, { flags: 'a' }) }))
+
+
+
 
 // Parse URL-Encoded bodies
 app.use(bodyParser.urlencoded({
@@ -82,20 +92,20 @@ app.use((req: any, res, next) => {
   const token: string = req.body.token || req.query.token || req.headers['x-access-token'];
 
   // if user has a token
-  if(token) {
+  if (token) {
 
     // verify that token is valid
     jsonWebToken.verify(token, config.security.authSecret, (error, decoded) => {
 
       // invalid
-      if(error) {
+      if (error) {
 
         return res.status(403).json({
           success: false,
           response: 'ERR_AUTHENTICATION_FAILED'
         });
 
-      // valid
+        // valid
       } else {
 
         req.session = decoded;
@@ -105,7 +115,7 @@ app.use((req: any, res, next) => {
 
     });
 
-  // when no token was passed
+    // when no token was passed
   } else {
 
     return res
