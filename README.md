@@ -10,7 +10,26 @@ Below is a short explanation of which technologies are used and what they're use
 - Express - The webserver itself
   - morgan - Logging library to log all requests of the webserver
 
-## Setting up
+---
+## Contributing
+For contributing, there's a number of things you should know.
+
+### Logging
+All logs are stored in `/logs` and can be configured in [config.json](/config/config.json) in *#logging*.
+The logs are split into different categories:  
+- **access** logs list all requests made to the API
+- **server** logs are for internal error stuff (everything else)
+
+Access logs are logged using morgan automatically.  
+For server logging, we use [winston](https://github.com/winstonjs/winston). The usage is as follows:
+![Usage](https://i.imgur.com/WFLyLuQ.png)
+> Result:
+> ```log
+> 2019-06-02T18:15:04.349Z [SERVER] INFO: Hello World
+>```
+
+
+---
 
 ### Database
 

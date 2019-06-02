@@ -16,7 +16,8 @@
     },
     "logging": {
         "access": "%projectroot%\\logs\\%logtime%_access.log",
-        "accessSchema": "combined"
+        "accessSchema": "combined",
+        "server": "%projectroot%\\logs\\%logtime%_server.log"
     },
     "api": {
         "headers": {

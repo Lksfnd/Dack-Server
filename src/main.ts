@@ -9,6 +9,8 @@ import mongoose from 'mongoose';
 import jsonWebToken from 'jsonwebtoken';
 import fs from 'fs';
 import config from '../config/config.json';
+import logger from './helpers/ServerLogger';
+const log = logger('SERVER');
 
 // Import Routes
 import RouteStatus from './routes/status';
@@ -30,12 +32,15 @@ const db = mongoose.connection;
 
 // Database connection error
 db.on('error', error => {
-  console.error('Database connection error', error);
+  log.log('crit', 'Database connection error', error);
 });
 
 db.on('open', () => {
-  console.log('Connected to database successfully!');
+  log.log('info','Connected to database successfully!');
 });
+
+log.log('info', "Hello World");
+
 
 /**
  * Logging
