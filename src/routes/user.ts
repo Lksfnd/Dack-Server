@@ -22,13 +22,13 @@ router.get('/name-available/:name', (req, res, next) => {
         res
             .status(HTTPStatusCode.CERR_BAD_REQUEST)
             .json({
-                error: 'CERR_BAD_REQUEST'
+                error: 'ERR_BAD_REQUEST'
             });
 
         // name passed
     } else {
 
-        User.find({ name })
+        User.findOne({ name })
             .then(document => {
 
                 const isAvailable: boolean = document.length === 0;
@@ -66,7 +66,7 @@ router.get('/email-available/:email', (req, res, next) => {
         res
             .status(HTTPStatusCode.CERR_BAD_REQUEST)
             .json({
-                error: 'CERR_BAD_REQUEST'
+                error: 'ERR_BAD_REQUEST'
             });
 
         // name passed
@@ -100,10 +100,9 @@ router.get('/email-available/:email', (req, res, next) => {
  * Creates a new user in the database (rate limited to 5 per day max.)
  * //TODO: rate limit cleanup every once in a while or server startup
  */
-router.post('/create', (req: any, res, next) => {
+router.post('/add', (req: any, res, next) => {
 
     const body = req.body;
-    console.log(body);
 
     // Validate request
     if( !body.name || !body.email || !body.password || body.name.length < 4 || body.email.length < 7 || body.password.length < 6 ) {

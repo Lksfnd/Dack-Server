@@ -7,3 +7,4 @@ package-lock.json
 /dist/
 /coverage/
 /__tests__/
+/.nyc_output/

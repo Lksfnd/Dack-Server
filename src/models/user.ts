@@ -5,10 +5,7 @@ const SchemaUser = mongoose.Schema({
     name: { type: String, unique: true },
     email: { type: String, unique: true },
     passwordHash: String,
-    registerTimestamp: { type: Number, default: Date.now() },
-    players: { type: [mongoose.Schema.Types.ObjectId], default: [] },
-    tournaments: {type: [], default: [] },
-    games: { type: [mongoose.Schema.Types.ObjectId], default: [] }
+    registerTimestamp: { type: Number, default: Date.now() }
 });
 
 export default mongoose.model('User', SchemaUser);

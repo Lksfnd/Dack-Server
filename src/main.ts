@@ -16,6 +16,9 @@ const log = logger('SERVER');
 import RouteStatus from './routes/status';
 import RouteAuthenticate from './routes/authenticate';
 import RouteUser from './routes/user';
+
+import RoutePlayer from './routes/player';
+
 import PlaceholderReplacer from './helpers/PlaceholderReplacer';
 
 
@@ -143,6 +146,7 @@ app.use((req: any, res, next) => {
 /*
 *   Authenticated routes
 */
+app.use('/player', RoutePlayer);
 
 
 
