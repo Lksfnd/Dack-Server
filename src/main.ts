@@ -20,7 +20,10 @@ import PlaceholderReplacer from './helpers/PlaceholderReplacer';
 
 
 const app = express();
-const port: number = config.server.port; //TODO: cfg
+
+//TODO: cfg
+// load from env for travis
+const port: number = parseInt(process.env.PORT) || config.server.port; 
 
 // Mongoose Database connection
 const connectionString: string = `mongodb://${config.database.host}:${config.database.port}/${config.database.database}`;
